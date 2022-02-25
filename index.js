@@ -4,6 +4,7 @@ const removeFile = require("./remove");
 const listFile = require("./list");
 const fetchFile = require("./fetch");
 const validateFile = require("./validate");
+const parceFile = require("./parce")
 
 const programInput = process.argv.slice(2);
 const programOperations = ["help", "add", "remove", "list", "fetch"];
@@ -19,10 +20,15 @@ switch (operation) {
     case programOperations[1]: // add function
         {
             const inputArguments = 2; // title & body
+            const title = programInput[1];
+            const body = programInput[2];
             validateFile.validateArgumentNumber(programInput.length - 1, inputArguments); // just removing the command from the array lengh
-            validateFile.validateTitle(programInput[1]);
-            validateFile.validateBody(programInput[2]);
+            validateFile.validateTitle(title);
+            validateFile.validateBody(body);
+            const parcedTitle = parceFile.parceTitle(title);
+            const parcedBody = parceFile.parceBody(body);
 
+            console.log(parcedBody, parcedTitle)
             break;
         }
 
