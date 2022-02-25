@@ -1,4 +1,5 @@
-const chalk = require("chalk")
+const chalk = require("chalk");
+const validateFile = require("./validate");
 
 const progarmCommands = {
     "Add Note": "node index.js add -title'Type Note Title' -body'Type Note Body'",
@@ -7,7 +8,12 @@ const progarmCommands = {
     "Fetch Note": "node index.js fetch -title'Type Note Title'"
 };
 
-const help = () => {
+const argumentsNumber = 1;
+
+const help = (arguments) => {
+
+    validateFile.validateArgumentNumber(arguments, argumentsNumber);
+
     for (command in progarmCommands) {
         console.log("")
         console.log(chalk.green(`${command} : ${progarmCommands[command]}`));

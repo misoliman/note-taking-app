@@ -5,32 +5,53 @@ const listFile = require("./list");
 const fetchFile = require("./fetch");
 const validateFile = require("./validate");
 
-const programInput = process.argv;
+const programInput = process.argv.slice(2);
 const programOperations = ["help", "add", "remove", "list", "fetch"];
 
-// validate.validateProgramInput(programInput);
+validateFile.validateProgramArguments(programInput);
 
 const operation = process.argv[2];
 
 switch (operation) {
-    case programOperations[0]:
-        helpFile.help();
+    case programOperations[0]: // help funciton 
+        helpFile.help(programInput);
         break;
-    case programOperations[1]:
-        console.log("adding");
-        break;
+    case programOperations[1]: // add function
+        {
+            const inputArguments = 2; // title & body
+            validateFile.validateArgumentNumber(programInput.length - 1, inputArguments); // just removing the command from the array lengh
+            validateFile.validateTitle(programInput[1]);
+            validateFile.validateBody(programInput[2]);
 
-    case programOperations[2]:
-        console.log("removing");
-        break;
+            break;
+        }
 
-    case programOperations[3]:
-        console.log("listing");
-        break;
+    case programOperations[2]: //remove funciton
+        {
+            const inputArguments = 1; //title
+            validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
+            console.log("removing");
+            break;
+        }
 
-    case programOperations[4]:
-        console.log("fetching");
-        break;
+    case programOperations[3]: //list funciton
+        {
+            const inputArguments = 0; // No arguments
+            validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
+            console.log("listing");
+            break;
+        }
+
+    case programOperations[4]:// fetch function
+        {
+            const inputArguments = 1; // title
+            validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
+            console.log("fetching");
+            break;
+        }
+
+    default:
+        throw new Error("Invalid Command. Type help to view commands !!")
 }
 
 
