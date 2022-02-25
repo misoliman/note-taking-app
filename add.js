@@ -1,13 +1,13 @@
 const fs = require("fs")
 const chalk = require("chalk")
 const validateFile = require("./validate");
+const retrieveNotesFile = require("./retrieveNotes")
 
 const addNote = (title, body) => {
     const note = { title: title, body: body };
     let objectNotes = [];
     try {
-        const stringNotes = fs.readFileSync("notes.txt", { encoding: 'utf8', flag: 'r' });
-        objectNotes = JSON.parse(stringNotes)
+        objectNotes = retrieveNotesFile.getNotes()
     } catch (e) {
         objectNotes = [];
 

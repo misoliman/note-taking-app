@@ -8,11 +8,11 @@ const progarmCommands = {
     "Fetch Note": "node index.js fetch -title'Type Note Title'"
 };
 
-const argumentsNumber = 1;
+const argumentsNumber = 0;
 
 const help = (arguments) => {
 
-    validateFile.validateArgumentNumber(arguments, argumentsNumber);
+    validateFile.validateArgumentNumber(arguments.length - 1, argumentsNumber);
 
     for (command in progarmCommands) {
         console.log("")

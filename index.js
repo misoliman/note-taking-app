@@ -44,7 +44,7 @@ switch (operation) {
         {
             const inputArguments = 0; // No arguments
             validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
-            console.log("listing");
+            listFile.list();
             break;
         }
 
