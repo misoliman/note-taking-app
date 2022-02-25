@@ -27,8 +27,8 @@ switch (operation) {
             validateFile.validateBody(body);
             const parcedTitle = parceFile.parceTitle(title);
             const parcedBody = parceFile.parceBody(body);
+            addFile.addNote(parcedTitle, parcedBody);
 
-            console.log(parcedBody, parcedTitle)
             break;
         }
 
