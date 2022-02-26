@@ -52,7 +52,10 @@ switch (operation) {
         {
             const inputArguments = 1; // title
             validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
-            console.log("fetching");
+            const title = programInput[1];
+            validateFile.validateTitle(title);
+            const parcedTitle = parceFile.parceTitle(title);
+            fetchFile.getTheNote(parcedTitle)
             break;
         }
 
