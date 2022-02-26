@@ -7,7 +7,7 @@ const getTheNote = (title) => {
         const notes = retrieveNotesFile.getNotes();
         for (note of notes) {
             if (note.title === title) {
-                console.log(note.title, " ", note.body)
+                console.log(note)
                 console.log(chalk.green.inverse("Note fetched"))
                 return;
             }

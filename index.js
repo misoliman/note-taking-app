@@ -5,9 +5,10 @@ const listFile = require("./list");
 const fetchFile = require("./fetch");
 const validateFile = require("./validate");
 const parceFile = require("./parce")
+const clearFile = require("./clear")
 
 const programInput = process.argv.slice(2);
-const programOperations = ["help", "add", "remove", "list", "fetch"];
+const programOperations = ["help", "add", "remove", "list", "fetch", "clear"];
 
 validateFile.validateProgramArguments(programInput);
 
@@ -59,6 +60,13 @@ switch (operation) {
             validateFile.validateTitle(title);
             const parcedTitle = parceFile.parceTitle(title);
             fetchFile.getTheNote(parcedTitle)
+            break;
+        }
+    case programOperations[5]: //remove funciton
+        {
+            const inputArguments = 0; // No arguments
+            validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
+            clearFile.clearNotes()
             break;
         }
 
