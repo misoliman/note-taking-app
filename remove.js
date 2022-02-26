@@ -10,8 +10,6 @@ const removeNote = (title) => {
                 return false
             return true
         })
-        console.log(filteredNotes.length, notes.length)
-
 
         if (filteredNotes.length === notes.length) {
             console.log(chalk.red.inverse("Not Note for Given Title"))
