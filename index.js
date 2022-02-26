@@ -34,9 +34,12 @@ switch (operation) {
 
     case programOperations[2]: //remove funciton
         {
-            const inputArguments = 1; //title
+            const inputArguments = 1; // title
             validateFile.validateArgumentNumber(programInput.length - 1, inputArguments);
-            console.log("removing");
+            const title = programInput[1];
+            validateFile.validateTitle(title);
+            const parcedTitle = parceFile.parceTitle(title);
+            removeFile.removeNote(parcedTitle)
             break;
         }
 
